@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Himeji\Ioc;
 
 /**
- * Class DependencyContainer
+ * Class Container
  * @package Himeji\Ioc
  */
 class Container
@@ -16,7 +16,7 @@ class Container
     private $dependencies;
 
     /**
-     * DependencyContainer constructor.
+     * Container constructor.
      */
     public function __construct() {
         $this->dependencies = [];
@@ -26,7 +26,7 @@ class Container
      * @param object $object
      * @return $this
      */
-    public function registerSingleton(object $object) : DependencyContainer {
+    public function registerSingleton(object $object) : Container {
         $this->dependencies[get_class($object)] = $object;
         return $this;
     }
@@ -35,7 +35,7 @@ class Container
      * @param string $objectName
      * @param $initiation
      */
-    public function registerTransient(string $objectName, $initiation = null) : DependencyContainer {
+    public function registerTransient(string $objectName, $initiation = null) : Container {
         $this->dependencies[$objectName] = $initiation;
         return $this;
     }
